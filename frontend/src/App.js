@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import FloatingButton from './components/FloatingButton';
 import SideNotesPanel from './components/SideNotesPanel';
+import PWAInstaller from './components/PWAInstaller';
 
 const STORAGE_KEY = 'sidenotes-theme';
 
@@ -26,6 +27,45 @@ function App() {
     localStorage.setItem(STORAGE_KEY, isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
 
+  // Service Worker Registration
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try {
+          const registration = await navigator.serviceWorker.register('/sw.js');
+          console.log('SW registered: ', registration);
+          
+          // Listen for updates
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            if (newWorker) {
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('New content available; please refresh.');
+                  // Could show a toast here asking user to refresh
+                }
+              });
+            }
+          });
+          
+        } catch (error) {
+          console.log('SW registration failed: ', error);
+        }
+      });
+    }
+
+    // Listen for shared content (from share target)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data.type === 'SHARED_CONTENT') {
+          console.log('Received shared content:', event.data.data);
+          // Handle shared content - could auto-open panel and create note
+          setIsPanelOpen(true);
+        }
+      });
+    }
+  }, []);
+
   // Keyboard shortcut listener
   useEffect(() => {
     const handleKeyboardShortcut = (e) => {
@@ -43,6 +83,16 @@ function App() {
     document.addEventListener('keydown', handleKeyboardShortcut);
     return () => document.removeEventListener('keydown', handleKeyboardShortcut);
   }, [isPanelOpen]);
+
+  // Handle URL parameters (for shortcuts)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const action = urlParams.get('action');
+    
+    if (action === 'new' || action === 'search') {
+      setIsPanelOpen(true);
+    }
+  }, []);
 
   const togglePanel = () => {
     setIsPanelOpen(prev => !prev);
@@ -128,7 +178,7 @@ function App() {
                 icon: '📱'
               },
               {
-                title: 'Markdown Support',
+                title: 'Markdown Support', 
                 description: 'Write with Markdown syntax and see live preview. Drag & drop images directly.',
                 icon: '✍️'
               },
@@ -194,6 +244,9 @@ function App() {
         isDark={isDarkMode}
         onThemeToggle={toggleTheme}
       />
+
+      {/* PWA Install Prompt */}
+      <PWAInstaller isDark={isDarkMode} />
     </div>
   );
 }
