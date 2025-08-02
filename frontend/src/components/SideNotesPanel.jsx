@@ -160,12 +160,16 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
       
       {/* Panel */}
       <div className={`
-        relative w-96 md:w-[480px] h-full
+        relative h-full
+        ${isFullscreen 
+          ? 'w-full flex' 
+          : 'w-96 md:w-[480px] flex flex-col'
+        }
         ${isDark 
           ? 'bg-slate-900 border-l border-slate-700' 
           : 'bg-white border-l border-gray-200'
         }
-        shadow-2xl z-40 flex flex-col
+        shadow-2xl z-40
       `}>
         
         {/* Header */}
