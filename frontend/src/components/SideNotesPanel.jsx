@@ -11,6 +11,7 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [storageInfo, setStorageInfo] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   // Load notes on component mount
   useEffect(() => {
