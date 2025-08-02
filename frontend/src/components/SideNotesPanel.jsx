@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Plus, Moon, Sun, Tag, Clock, Trash2, Download, Upload, Settings } from 'lucide-react';
+import { Search, Plus, Moon, Sun, Tag, Clock, Trash2, Download, Upload, Settings, Maximize, Minimize } from 'lucide-react';
 import NoteEditor from './NoteEditor';
 import { notesAPI } from '../services/notesStorage';
 
