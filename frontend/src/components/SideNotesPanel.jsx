@@ -148,6 +148,7 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
       fixed right-0 top-0 h-full z-40
       transform transition-transform duration-300 ease-in-out
       ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+      ${isFullscreen ? 'left-0 w-full' : ''}
     `}>
       {/* Overlay */}
       {isOpen && (
