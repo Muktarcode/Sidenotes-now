@@ -189,7 +189,7 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
               `}>
                 SideNotes
               </h1>
-              <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2">
               <button
                 onClick={onThemeToggle}
                 className={`
