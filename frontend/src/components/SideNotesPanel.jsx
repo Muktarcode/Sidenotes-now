@@ -249,6 +249,7 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
             </div>
           </div>
           
+          
           {/* Settings Panel */}
           {showSettings && (
             <div className={`
