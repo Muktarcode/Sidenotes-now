@@ -194,6 +194,20 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
                 {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
               <button
+                onClick={() => setIsFullscreen(!isFullscreen)}
+                className={`
+                  p-2 rounded-lg transition-colors
+                  ${isDark 
+                    ? 'hover:bg-slate-800 text-slate-300' 
+                    : 'hover:bg-gray-100 text-gray-600'
+                  }
+                  ${isFullscreen ? (isDark ? 'bg-slate-800' : 'bg-gray-100') : ''}
+                `}
+                aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+              >
+                {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
+              </button>
+              <button
                 onClick={() => setShowSettings(!showSettings)}
                 className={`
                   p-2 rounded-lg transition-colors
