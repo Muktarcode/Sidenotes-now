@@ -174,9 +174,14 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
         
         {/* Header */}
         <div className={`
-          p-4 border-b
+          ${isFullscreen ? 'w-1/3 min-w-[300px]' : 'w-full'} 
+          flex flex-col border-r
           ${isDark ? 'border-slate-700' : 'border-gray-200'}
         `}>
+          <div className={`
+            p-4 border-b
+            ${isDark ? 'border-slate-700' : 'border-gray-200'}
+          `}>
           <div className="flex items-center justify-between mb-4">
             <h1 className={`
               text-xl font-semibold
