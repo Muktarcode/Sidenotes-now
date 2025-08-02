@@ -190,7 +190,7 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
                 SideNotes
               </h1>
               <div className="flex items-center space-x-2">
-              <button
+                <button
                 onClick={onThemeToggle}
                 className={`
                   p-2 rounded-lg transition-colors
