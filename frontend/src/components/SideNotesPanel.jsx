@@ -182,7 +182,7 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
             p-4 border-b
             ${isDark ? 'border-slate-700' : 'border-gray-200'}
           `}>
-          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4">
             <h1 className={`
               text-xl font-semibold
               ${isDark ? 'text-slate-100' : 'text-gray-900'}
