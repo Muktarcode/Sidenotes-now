@@ -183,12 +183,12 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
             ${isDark ? 'border-slate-700' : 'border-gray-200'}
           `}>
             <div className="flex items-center justify-between mb-4">
-            <h1 className={`
-              text-xl font-semibold
-              ${isDark ? 'text-slate-100' : 'text-gray-900'}
-            `}>
-              SideNotes
-            </h1>
+              <h1 className={`
+                text-xl font-semibold
+                ${isDark ? 'text-slate-100' : 'text-gray-900'}
+              `}>
+                SideNotes
+              </h1>
             <div className="flex items-center space-x-2">
               <button
                 onClick={onThemeToggle}
