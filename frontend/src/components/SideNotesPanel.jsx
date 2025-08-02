@@ -190,19 +190,19 @@ const SideNotesPanel = ({ isOpen, onClose, isDark, onThemeToggle }) => {
                 SideNotes
               </h1>
               <div className="flex items-center space-x-2">
-              <button
-                onClick={onThemeToggle}
-                className={`
-                  p-2 rounded-lg transition-colors
-                  ${isDark 
-                    ? 'hover:bg-slate-800 text-slate-300' 
-                    : 'hover:bg-gray-100 text-gray-600'
-                  }
-                `}
-                aria-label="Toggle theme"
-              >
-                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-              </button>
+                <button
+                  onClick={onThemeToggle}
+                  className={`
+                    p-2 rounded-lg transition-colors
+                    ${isDark 
+                      ? 'hover:bg-slate-800 text-slate-300' 
+                      : 'hover:bg-gray-100 text-gray-600'
+                    }
+                  `}
+                  aria-label="Toggle theme"
+                >
+                  {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </button>
               <button
                 onClick={() => setIsFullscreen(!isFullscreen)}
                 className={`
